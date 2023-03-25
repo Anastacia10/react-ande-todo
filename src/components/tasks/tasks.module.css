@@ -1,0 +1,46 @@
+.list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px, 25px;
+  padding: 0px;
+  margin-top: 25px;
+}
+
+.list div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.list div:hover {
+  background-color: aliceblue;
+}
+
+.list_item {
+  font-size: 20px;
+  color: 2px solid rgb(26, 44, 102);
+}
+
+.list_btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: white;
+  color: rgb(26, 44, 102);
+  border: 2px solid rgb(26, 44, 102);
+}
+
+.list_btn:hover {
+  transition: all 3ms;
+  color: white;
+  border: 1px solid rgb(26, 44, 102);
+  background-color: rgb(26, 44, 102);
+}
+
+.message {
+  font-size: 18px;
+  align-self: center;
+  color: 2px solid rgb(26, 44, 102);
+}
