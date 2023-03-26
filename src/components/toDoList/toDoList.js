@@ -2,7 +2,7 @@ import TaskForm from "../taskForm/taskForm";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToActiveTasks } from "../../store/usersSlice";
+import { updateUser } from "../../store/usersSlice";
 import Tasks from "../tasks/tasks";
 import { getUserByIndex } from "../../store/selectors";
 import stl from "./toDoList.module.css";
@@ -36,22 +36,10 @@ const ToDoList = () => {
       const updatedActiveTasks = [...user.activeTasks];
       updatedActiveTasks.push(task);
       const updatedUser = { ...user, activeTasks: updatedActiveTasks };
-      dispatch(addToActiveTasks({ updatedUser, index }));
+      dispatch(updateUser({ updatedUser, index }));
     }
   };
 
-  const onCompletingTaskHandler = (task, index, user, indexTask) => {
-    const updatedActiveTasks = [...user.activeTasks];
-    const updatedNotActiveTasks = [...user.notActiveTasks];
-    updatedNotActiveTasks.push(task);
-    updatedActiveTasks.splice(indexTask, 1);
-    const updatedUser = {
-      ...user,
-      activeTasks: updatedActiveTasks,
-      notActiveTasks: updatedNotActiveTasks,
-    };
-    dispatch(addToActiveTasks({ updatedUser, index }));
-  };
   return (
     <>
       <div className={stl.container}>
@@ -83,12 +71,7 @@ const ToDoList = () => {
             Not Active tasks
           </button>
         </div>
-        <Tasks
-          index={index}
-          tasksName={choosenActive ? "active" : "not_active"}
-          user={user}
-          onCompletingTaskHandler={onCompletingTaskHandler}
-        />
+        <Tasks tasksName={choosenActive ? "active" : "not_active"} />
       </div>
     </>
   );

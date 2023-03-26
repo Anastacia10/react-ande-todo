@@ -8,19 +8,42 @@
   margin-top: 25px;
 }
 
-.list div {
+.list_container {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: 15px;
 }
+.list_container:hover {
+  background-color: aliceblue;
+}
 
-.list div:hover {
+.list_container:hover .list_edditedItem {
+  background-color: aliceblue;
+}
+
+.list_container:hover .list_item {
   background-color: aliceblue;
 }
 
 .list_item {
+  width: 100%;
   font-size: 20px;
-  color: 2px solid rgb(26, 44, 102);
+  border: none;
+  color: rgb(26, 44, 102);
+  background-color: white;
+}
+
+.list_edditedItem {
+  width: 100%;
+  font-size: 20px;
+  border: none;
+  color: rgb(177, 32, 61);
+  background-color: white;
+}
+
+.list_btns {
+  display: flex;
 }
 
 .list_btn {
@@ -37,6 +60,30 @@
   color: white;
   border: 1px solid rgb(26, 44, 102);
   background-color: rgb(26, 44, 102);
+}
+
+.list_btn:first-of-type {
+  margin-right: 10px;
+}
+
+.list_btnSend {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: white;
+  color: rgb(177, 32, 61);
+  border: 2px solid rgb(177, 32, 61);
+}
+
+.list_btnSend:hover {
+  transition: all 3ms;
+  color: white;
+  border: 1px solid rgb(177, 32, 61);
+  background-color: rgb(177, 32, 61);
+}
+
+.list_btnSend:first-of-type {
+  margin-right: 10px;
 }
 
 .message {

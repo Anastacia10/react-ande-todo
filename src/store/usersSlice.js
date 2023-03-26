@@ -11,10 +11,7 @@ const usersSlice = createSlice({
     addUser: (state, action) => {
       state.users.push(action.payload);
     },
-    addToActiveTasks: (state, action) => {
-      state.users[action.payload.index] = { ...action.payload.updatedUser };
-    },
-    addToNotActiveTasks: (state, action) => {
+    updateUser: (state, action) => {
       state.users[action.payload.index] = { ...action.payload.updatedUser };
     },
   },
@@ -23,9 +20,4 @@ const usersSlice = createSlice({
 const { actions, reducer } = usersSlice;
 
 export default reducer;
-export const {
-  addUser,
-  addToActiveTasks,
-  addToNotActiveTasks,
-  deleteFromActiveTasks,
-} = actions;
+export const { addUser, updateUser } = actions;
