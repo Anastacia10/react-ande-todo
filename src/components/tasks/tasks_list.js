@@ -32,11 +32,11 @@ export const List = (props) => {
     }
   };
 
-  const onCompletingTaskHandler = (task, index, user, indexTask) => {
+  const onCompletingTaskHandler = (task, index, user, taskIndex) => {
     const updatedActiveTasks = [...user.activeTasks];
     const updatedNotActiveTasks = [...user.notActiveTasks];
     updatedNotActiveTasks.push(task);
-    updatedActiveTasks.splice(indexTask, 1);
+    updatedActiveTasks.splice(taskIndex, 1);
     const updatedUser = {
       ...user,
       activeTasks: updatedActiveTasks,
@@ -77,6 +77,7 @@ export const List = (props) => {
               taskIndex={taskIndex}
               index={index}
               user={user}
+              task={task}
             />
           </div>
         </li>

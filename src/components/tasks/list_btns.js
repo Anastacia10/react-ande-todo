@@ -15,12 +15,12 @@ export const EditButton = (props) => {
 };
 
 export const DoneButton = (props) => {
-  const { tasksName, onClickHandler, taskIndex, index, user } = props;
+  const { tasksName, onClickHandler, taskIndex, index, user, task } = props;
   return (
     <button
       className={stl.list_btn}
       style={{ display: tasksName === "active" ? "block" : "none" }}
-      onClick={() => onClickHandler(taskIndex, index, user, taskIndex)}
+      onClick={() => onClickHandler(task, index, user, taskIndex)}
     >
       ✔
     </button>
