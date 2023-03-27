@@ -1,20 +1,27 @@
-export const getUserByIndex = (index: number) => (state) => {
-  return state.users[index] ?? {};
+import { User, Tasks } from "../components/types";
+
+export const getName = (state: User): string => {
+  return state.name ?? "";
 };
 
-export const getUserActiveTasks = (index: number) => (state) => {
-  return [...state.users[index].activeTasks] ?? [];
-};
+export const getTasks =
+  (listName: string) =>
+  (state: User): Tasks => {
+    return state[listName] ?? [];
+  };
 
-export const getUserNotActiveTasks = (index: number) => (state) => {
-  return [...state.users[index].notActiveTasks] ?? [];
-};
+export const getTaskFromActiveTasks =
+  (index: number) =>
+  (state): string => {
+    return state.activeTasks[index] ?? "";
+  };
 
-export const getUser = (name: string) => (users) => {
-  const user = users.find((user) => user.name === name);
-  return user ?? false;
-};
+export const getTaskFromNotActiveTasks =
+  (index: number) =>
+  (state: User): string => {
+    return state.notActiveTasks[index] ?? "";
+  };
 
-export const getUsers = (state) => {
-  return [...state.users];
+export const getQuantityActiveTasks = (state: User): number => {
+  return state.activeTasks.length ?? 0;
 };

@@ -8,10 +8,9 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="todolist/:index" element={<ToDoListPage />} />
       </Routes>
     </BrowserRouter>
   );
 };
 export default App;
-//
+//<Route path="todolist" element={<ToDoListPage />} />
