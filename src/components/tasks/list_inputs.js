@@ -1,7 +1,7 @@
 import stl from "./tasks.module.css";
 
 export const EditInput = (props) => {
-  const { value, taskIndex, onChangeHandler } = props;
+  const { value, taskIndex, onChangeHandler, task } = props;
   return (
     <input
       autoFocus="true"
@@ -9,7 +9,7 @@ export const EditInput = (props) => {
       type="text"
       value={value}
       disabled={false}
-      onChange={(e) => onChangeHandler(e, taskIndex)}
+      onChange={(e) => onChangeHandler(e, taskIndex, task)}
     />
   );
 };

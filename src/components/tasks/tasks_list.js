@@ -2,11 +2,11 @@ import stl from "./tasks.module.css";
 import { updateUser } from "../../store/usersSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { DoneButton, EditButton } from "./list_btns";
+import { DeleteButton, DoneButton, EditButton } from "./list_btns";
 import { DisabledInput, EditInput } from "./list_inputs";
 
 export const List = (props) => {
-  const { tasksName, user, index, tasks } = props;
+  const { tasks } = props;
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   const [edditingIndex, setEdditingIndex] = useState(null);
@@ -17,7 +17,7 @@ export const List = (props) => {
     setValue(value);
   };
 
-  const onDisabledSwicthHandler = (taskIndex, index, user) => {
+  const onDisabledSwicthHandler = (user, index, taskIndex) => {
     if (isDone) {
       setEdditingIndex(taskIndex);
       setIsDone(false);
@@ -32,7 +32,7 @@ export const List = (props) => {
     }
   };
 
-  const onCompletingTaskHandler = (task, index, user, taskIndex) => {
+  const onCompletingTaskHandler = (user, index, taskIndex, task) => {
     const updatedActiveTasks = [...user.activeTasks];
     const updatedNotActiveTasks = [...user.notActiveTasks];
     updatedNotActiveTasks.push(task);
@@ -42,6 +42,13 @@ export const List = (props) => {
       activeTasks: updatedActiveTasks,
       notActiveTasks: updatedNotActiveTasks,
     };
+    dispatch(updateUser({ updatedUser, index }));
+  };
+
+  const onDeleteTaskHandler = (user, index, taskIndex, tasks, tasksName) => {
+    const updateTask = [...tasks];
+    updateTask.splice(taskIndex, 1);
+    const updatedUser = { ...user, [tasksName]: [...updateTask] };
     dispatch(updateUser({ updatedUser, index }));
   };
 
@@ -63,20 +70,21 @@ export const List = (props) => {
             />
           )}
           <div className={stl.list_btns}>
-            <EditButton
-              tasksName={tasksName}
-              onClickHandler={onDisabledSwicthHandler}
+            <DeleteButton
+              {...props}
+              onClickHandler={onDeleteTaskHandler}
               taskIndex={taskIndex}
-              index={index}
-              user={user}
+            />
+            <EditButton
+              {...props}
+              onClickHandler={onDisabledSwicthHandler}
               isEditing={edditingIndex === taskIndex && !isDone}
+              taskIndex={taskIndex}
             />
             <DoneButton
-              tasksName={tasksName}
+              {...props}
               onClickHandler={onCompletingTaskHandler}
               taskIndex={taskIndex}
-              index={index}
-              user={user}
               task={task}
             />
           </div>

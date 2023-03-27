@@ -32,6 +32,7 @@
   border: none;
   color: rgb(26, 44, 102);
   background-color: white;
+  flex-grow: 1;
 }
 
 .list_edditedItem {
@@ -40,6 +41,7 @@
   border: none;
   color: rgb(177, 32, 61);
   background-color: white;
+  flex-grow: 1;
 }
 
 .list_btns {
@@ -62,7 +64,7 @@
   background-color: rgb(26, 44, 102);
 }
 
-.list_btn:first-of-type {
+.list_btns button:not(:last-of-type) {
   margin-right: 10px;
 }
 

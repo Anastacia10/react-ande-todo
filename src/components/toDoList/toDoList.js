@@ -4,17 +4,18 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../store/usersSlice";
 import Tasks from "../tasks/tasks";
-import { getUserByIndex } from "../../store/selectors";
+import { getUserByIndex } from "../../store/selectors.ts";
 import stl from "./toDoList.module.css";
 
 const ToDoList = () => {
   const { index } = useParams();
-  const [task, setTask] = useState("");
   const user = useSelector(getUserByIndex(index));
+  const dispatch = useDispatch();
+  //State
+  const [task, setTask] = useState("");
+  const [isValid, setIsValid] = useState(false);
   const [choosenActive, setChoosenActive] = useState(true);
   const [choosenNotActive, setchoosenNotActive] = useState(false);
-  const dispatch = useDispatch();
-  const [isValid, setIsValid] = useState("false");
 
   const onChangeHandler = (e) => {
     const task = e.target.value;
@@ -37,6 +38,8 @@ const ToDoList = () => {
       updatedActiveTasks.push(task);
       const updatedUser = { ...user, activeTasks: updatedActiveTasks };
       dispatch(updateUser({ updatedUser, index }));
+      setTask("");
+      setIsValid(false);
     }
   };
 
@@ -71,7 +74,7 @@ const ToDoList = () => {
             Not Active tasks
           </button>
         </div>
-        <Tasks tasksName={choosenActive ? "active" : "not_active"} />
+        <Tasks tasksName={choosenActive ? "activeTasks" : "notActiveTasks"} />
       </div>
     </>
   );

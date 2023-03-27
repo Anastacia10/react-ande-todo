@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../store/usersSlice";
-import { getUsers } from "../../store/selectors";
+import { getUsers } from "../../store/selectors.ts";
 import { useState } from "react";
-import { User, getIndex } from "../tools/tools";
+import { User, getIndex } from "../tools/tools.ts";
 import { useNavigate } from "react-router-dom";
 import stl from "./loginForm.module.css";
 

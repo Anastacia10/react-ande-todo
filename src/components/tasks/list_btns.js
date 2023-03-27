@@ -6,8 +6,8 @@ export const EditButton = (props) => {
   return (
     <button
       className={isEditing ? stl.list_btnSend : stl.list_btn}
-      style={{ display: tasksName === "active" ? "block" : "none" }}
-      onClick={() => onClickHandler(taskIndex, index, user)}
+      style={{ display: tasksName === "activeTasks" ? "block" : "none" }}
+      onClick={() => onClickHandler(user, index, taskIndex)}
     >
       {isEditing ? "✉" : "✎"}
     </button>
@@ -19,10 +19,22 @@ export const DoneButton = (props) => {
   return (
     <button
       className={stl.list_btn}
-      style={{ display: tasksName === "active" ? "block" : "none" }}
-      onClick={() => onClickHandler(task, index, user, taskIndex)}
+      style={{ display: tasksName === "activeTasks" ? "block" : "none" }}
+      onClick={() => onClickHandler(user, index, taskIndex, task)}
     >
       ✔
+    </button>
+  );
+};
+
+export const DeleteButton = (props) => {
+  const { user, index, taskIndex, tasks, tasksName, onClickHandler } = props;
+  return (
+    <button
+      className={stl.list_btn}
+      onClick={() => onClickHandler(user, index, taskIndex, tasks, tasksName)}
+    >
+      ✘
     </button>
   );
 };
