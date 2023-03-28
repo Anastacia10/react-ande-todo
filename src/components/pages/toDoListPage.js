@@ -1,9 +1,12 @@
-import NotActiveTasks from "../notActiveTasks/notActiveTasks";
-import ActiveTasks from "../activeTasks/activeTasks";
-import AddToForm from "../addToForm/addToForm";
+import stl from "./pages.module.css";
+import ToDoList from "../toDoList/toDoList";
 
-const ToDoListPage = () => {
-  return <div></div>;
+const LoginPage = () => {
+  return (
+    <div className={stl.pageContainer}>
+      <ToDoList />
+    </div>
+  );
 };
 
-export default ToDoListPage;
+export default LoginPage;

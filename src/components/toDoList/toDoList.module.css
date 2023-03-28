@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 48px;
+  margin: 40px 0px;
+  border: 2px solid rgb(26, 44, 102);
+  background-color: white;
+}
+
+.toDo_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toDo_switchers {
+  align-self: center;
+  display: flex;
+}
+
+.btn_notActive {
+  width: 120px;
+  height: 45px;
+  color: rgb(26, 44, 102);
+  border-color: rgb(26, 44, 102);
+  background-color: white;
+  text-align: center;
+}
+
+.btn_notActive:hover {
+  transition: all 0.3s;
+  color: white;
+  border-color: white;
+  background-color: rgb(26, 44, 102);
+}
+
+.btn_active {
+  width: 120px;
+  height: 45px;
+  color: white;
+  border-color: white;
+  background-color: rgb(26, 44, 102);
+  text-align: center;
+}
