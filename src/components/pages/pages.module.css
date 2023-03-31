@@ -1,0 +1,24 @@
+.pageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.errorContainer {
+  align-self: center;
+  display: flex;
+  width: 300px;
+  margin: 48px;
+  border-radius: 15px;
+  padding: 64px;
+  border: 2px solid rgb(26, 44, 102);
+  background-color: white;
+}
+
+.message {
+  text-align: center;
+  font-size: 24px;
+  color: rgb(26, 44, 102);
+}

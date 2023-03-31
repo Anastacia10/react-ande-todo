@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.taskForm_validInput {
+  width: 100%;
+  height: 40px;
+  padding: 0px 10px;
+  border: 2px solid rgb(26, 44, 102);
+  border-radius: 10px 0px 0px 10px;
+  font-size: 18px;
+  color: rgb(26, 44, 102);
+}
+
+.taskForm_invalidInput {
+  width: 100%;
+  height: 40px;
+  padding: 0px 10px;
+  border: 2px solid rgb(177, 32, 61);
+  border-radius: 10px 0px 0px 10px;
+  font-size: 18px;
+  color: rgb(177, 32, 61);
+}
+
+.taskForm_btn {
+  height: 43px;
+  width: 250px;
+  color: white;
+  font-size: 16px;
+  border: 2px solid rgb(26, 44, 102);
+  border-radius: 0px 10px 10px 0px;
+  text-align: center;
+  padding: 3px, 10px;
+  background-color: rgb(26, 44, 102);
+}
+
+.taskForm_btn:hover {
+  transition: 0.3s;
+  color: white;
+  border: 2px solid rgb(26, 44, 102);
+  background-color: rgb(16, 28, 68);
+}
+
+.taskForm_btn:disabled {
+  transition: 0.3s;
+  color: rgb(177, 32, 61);
+  border: 2px solid rgb(177, 32, 61);
+  background-color: rgb(194, 199, 200);
+}
