@@ -5,12 +5,14 @@ import {
   AddTaskPayload,
   UpdateTaskPayload,
   DeleteTaskPayload,
+  ListName,
 } from "../components/types";
 
 const initialState: User = {
   name: "",
   activeTasks: [],
   notActiveTasks: [],
+  listName: "activeTasks",
 };
 
 const userSlice = createSlice({
@@ -45,10 +47,22 @@ const userSlice = createSlice({
       state[action.payload.listName][action.payload.index] =
         action.payload.task;
     },
+    updateListName: (
+      state: User,
+      action: { type: string; payload: ListName }
+    ) => {
+      state.listName = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = userSlice;
 
 export default reducer;
-export const { chooseName, addToList, deleteFromList, updateTask } = actions;
+export const {
+  chooseName,
+  addToList,
+  deleteFromList,
+  updateTask,
+  updateListName,
+} = actions;

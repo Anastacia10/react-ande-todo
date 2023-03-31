@@ -5,19 +5,16 @@ import stl from "./loginForm.module.css";
 import { chooseName } from "../../store/userSlice";
 import { validateLoginForm } from "../validation";
 import { Name } from "../types";
-import { getName } from "../../store/selectors";
-import { useSelector } from "react-redux";
 
 const LoginForm: FC = (): ReactElement => {
-  const name = useSelector(getName);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [value, setValue] = useState<Name>("");
   const [invalidMessage, setInvalidMessage] = useState<string>("");
   const [isValid, setIsValid] = useState<boolean>(false);
 
-  const onChangeHandler = (e) => {
-    const value: string = e.target.value;
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const value = e.target.value;
     const result = validateLoginForm(value);
     if (result === "valid") {
       setValue(value);
@@ -28,7 +25,7 @@ const LoginForm: FC = (): ReactElement => {
     }
   };
 
-  const onSubmitHandler = () => {
+  const onSubmitHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (isValid) {
       dispatch(chooseName(value));
       navigate("todolist");

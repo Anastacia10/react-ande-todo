@@ -1,4 +1,4 @@
-import { User, Tasks } from "../components/types";
+import { User, Tasks, ListName } from "../components/types";
 
 export const getName = (state: User): string => {
   return state.name ?? "";
@@ -24,4 +24,8 @@ export const getTaskFromNotActiveTasks =
 
 export const getQuantityActiveTasks = (state: User): number => {
   return state.activeTasks.length ?? 0;
+};
+
+export const getListName = (state: User): ListName => {
+  return state.listName;
 };

@@ -12,6 +12,7 @@ export type User = {
   name: Name;
   activeTasks: Tasks;
   notActiveTasks: Tasks;
+  listName: ListName;
 };
 
 export type AddTaskPayload = { listName: ListName; task: string };

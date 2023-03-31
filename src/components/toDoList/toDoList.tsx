@@ -1,55 +1,48 @@
 import TaskForm from "../taskForm/taskForm";
 import stl from "./toDoList.module.css";
+import { useDispatch } from "react-redux";
+import { updateListName } from "../../store/userSlice";
+import {
+  getListName,
+  getQuantityActiveTasks,
+  getName,
+} from "../../store/selectors";
+import { useSelector } from "react-redux";
+import Tasks from "../tasks/tasks";
 
 const ToDoList = () => {
-  /*const { index } = useParams();
   const dispatch = useDispatch();
-  //State
-  const [task, setTask] = useState("");
-  const [isValid, setIsValid] = useState(false);
-  const [choosenActive, setChoosenActive] = useState(true);
-  const [choosenNotActive, setchoosenNotActive] = useState(false);
+  const name = useSelector(getName);
+  const listName = useSelector(getListName);
+  const quantityActiveTasks = useSelector(getQuantityActiveTasks);
 
-  const onChangeHandler = (e) => {
-    const task = e.target.value;
-    if (task.length === 0) {
-      setIsValid(false);
+  const onListNameHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
+    if (listName === "activeTasks") {
+      dispatch(updateListName("notActiveTasks"));
     } else {
-      setIsValid(true);
+      dispatch(updateListName("activeTasks"));
     }
-    setTask(task);
   };
-
-  const listSwitcherHandler = () => {
-    setChoosenActive((choosenActive) => !choosenActive);
-    setchoosenNotActive((choosenNotActive) => !choosenNotActive);
-  };
-
-  const onSubmitTaskHandler = (task, index, user, isValid) => {
-    if (isValid) {
-      const updatedActiveTasks = [...user.activeTasks];
-      updatedActiveTasks.push(task);
-      const updatedUser = { ...user, activeTasks: updatedActiveTasks };
-      dispatch(updateUser({ updatedUser, index }));
-      setTask("");
-      setIsValid(false);
-    }
-  };*/
 
   return (
     <>
       <div className={stl.container}>
         <div className={stl.toDo_title}>
-          <h2>Hello, </h2>
-          <h2>Active tasks:</h2>
+          <h2>Hello, {name}</h2>
+          <h2>Active tasks: {quantityActiveTasks}</h2>
         </div>
         <TaskForm />
       </div>
       <div className={stl.container}>
         <div className={stl.toDo_switchers}>
-          <button>Active tasks</button>
-          <button>Not Active tasks</button>
+          <button onClick={onListNameHandler} className={stl.btn_active}>
+            Active tasks
+          </button>
+          <button onClick={onListNameHandler} className={stl.btn_notActive}>
+            Not Active tasks
+          </button>
         </div>
+        <Tasks />
       </div>
     </>
   );

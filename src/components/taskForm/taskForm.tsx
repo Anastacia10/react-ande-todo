@@ -1,8 +1,32 @@
 import stl from "./taskForm.module.css";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addToList } from "../../store/userSlice";
 
-const TaskForm = (props) => {
-  const { onSubmitTaskHandler, onChangeHandler, index, task, user, isValid } =
-    props;
+const TaskForm = () => {
+  const dispatch = useDispatch();
+  const [task, setTask] = useState<string>("");
+  const [isValid, setIsValid] = useState<boolean>(false);
+
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const task = e.target.value;
+    if (task.length === 0) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+    setTask(task);
+  };
+
+  const onSubmitTaskHandler: React.MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
+    if (isValid) {
+      dispatch(addToList({ task, listName: "activeTasks" }));
+      setTask("");
+      setIsValid(false);
+    }
+  };
   return (
     <div className={stl.container}>
       <input
@@ -16,7 +40,7 @@ const TaskForm = (props) => {
       />
       <button
         className={stl.taskForm_btn}
-        onClick={() => onSubmitTaskHandler(task, index, user, isValid)}
+        onClick={onSubmitTaskHandler}
         disabled={!isValid}
       >
         Add
